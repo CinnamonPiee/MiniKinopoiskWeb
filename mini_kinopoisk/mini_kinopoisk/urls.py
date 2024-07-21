@@ -17,6 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from films_serials.views import films_serials
+from users.views import users
+from history.views import history
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('films_serials/', films_serials),
+    path('history/', history),
+    path('users/', users),
 ]

@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def films_serials(request):
+    return render(
+        request,
+        "films_serials/index.html",
+        {"title": "Mini Kinopoisk"},
+    )
