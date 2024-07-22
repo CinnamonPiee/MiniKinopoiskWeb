@@ -1,29 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <h1>Mini Kinopoisk</h1>
-        <nav>
-            <ul>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends "history/base.html" %}
+{% load static %}
 
+
+
+{% block title %}
+    MiniKinopoisk - History
+{% endblock title %}
+
+{% block content %}
     <!-- Main Content -->
-    <main>
-        <section>
-            <h2>Welcome! This is history block!</h2>
-        </section>
-    </main>
-</body>
-</html>
+        <main>
+            <section>
+                <h2>Welcome! This is history block!</h2>
+            </section>
+        </main>
+{% endblock content %}
+    

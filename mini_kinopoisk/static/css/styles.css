@@ -26,6 +26,13 @@ header h1 {
     font-size: 1.5rem;
 }
 
+header h1 a {
+    color: #ffa500;
+    text-decoration: none;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -47,9 +54,22 @@ main {
     padding: 2rem;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
+.buttons {
+    margin-top: 2rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin-right: 1rem;
+    background-color: #ffa500;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ff8c00;
 }

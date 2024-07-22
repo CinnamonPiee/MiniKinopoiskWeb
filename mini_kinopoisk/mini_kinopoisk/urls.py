@@ -26,7 +26,7 @@ from history.views import history
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_page, name="main_page"),
-    path('films_serials/', films_serials),
-    path('history/', history),
-    path('users/', users),
+    path('films_serials/', films_serials, name="films_serials"),
+    path('history/', history, name="history"),
+    path('users/', users, name="users"),
 ]
