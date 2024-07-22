@@ -1,26 +1,25 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <h1><a href="{% url 'main_page' %}" class="logo">Mini Kinopoisk</a></h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'users' %}">Login</a></li>
-                <li><a href="{% url 'users' %}">Register</a></li>
-            </ul>
-        </nav>
+      <h1><a href="{% url 'main_page' %}" class="logo">Mini Kinopoisk</a></h1>
+      <nav>
+        <ul>
+          <li><a href="{% url 'users' %}">Login</a></li>
+          <li><a href="{% url 'users' %}">Register</a></li>
+        </ul>
+      </nav>
     </header>
 
     {% block content %} {% endblock content %}
-</body>
+  </body>
 </html>
