@@ -1,3 +1,25 @@
 from django.db import models
 
-# Create your models here.
+
+class SearchFilm(models.Model):
+    name = models.CharField(max_length=60, null=True)
+    janr = models.CharField(max_length=60, null=True)
+    year = models.IntegerField(null=True)
+    country = models.CharField(null=True)
+    movie_length = models.PositiveIntegerField(null=True)
+    description = models.TextField(null=True)
+    rating = models.DecimalField(max_digits=1, decimal_places=1, null=True)
+    age_rating = models. PositiveBigIntegerField(null=True)
+    picture = models.URLField(max_length=200, null=True)
+
+
+class SearchSerial(models.Model):
+    name = models.CharField(max_length=60, null=True)
+    janr = models.CharField(max_length=60, null=True)
+    rating = models.DecimalField(max_digits=1, decimal_places=1, null=True)
+    release_year = models.CharField(max_length=60, null=True)
+    series_length = models.CharField(max_length=10, null=True)
+    country = models.CharField(null=True)
+    age_rating = models. PositiveBigIntegerField(null=True)
+    description = models.TextField(null=True)
+    picture = models.URLField(max_length=200, null=True)
