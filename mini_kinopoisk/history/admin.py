@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import HistoryFilm, HistorySerial
 
-# Register your models here.
+
+admin.site.register(HistorySerial)
+admin.site.register(HistoryFilm)

@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import SearchFilm, SearchSerial
 
-# Register your models here.
+
+admin.site.register(SearchSerial)
+admin.site.register(SearchFilm)
