@@ -7,3 +7,6 @@ class User(models.Model):
     phone_number = models.CharField(max_length=15, null=False, unique=True)
     telegram_id = models.BigIntegerField(null=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
+
+    def __str__(self) -> str:
+        return self.name
