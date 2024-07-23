@@ -8,21 +8,20 @@
 
 
 {% block content %}
-    <!-- Main Content -->
-        <main>
-            <section>
-                <h2>Welcome!</h2>
-                <p>Here you can find information about your favorite movies and TV shows.</p>
-                <div class="buttons">
-                    <ul>
-                        <li>
-                            <a href={% url "films_serials" %} class="button">Фильмы / Сериалы</a>
-                        </li>
-                        <li>
-                            <a href={% url "history" %} class="button">История поиска</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </main>
+    <main>
+        <section>
+            <h2>Welcome!</h2>
+            <p>Here you can find information about your favorite movies and TV shows.</p>
+            <div class="buttons">
+                <ul>
+                    <li>
+                        <a href={% url "films_serials" %} class="button">Фильмы / Сериалы</a>
+                    </li>
+                    <li>
+                        <a href={% url "history" %} class="button">История поиска</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
 {% endblock content %}
