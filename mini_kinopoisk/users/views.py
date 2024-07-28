@@ -1,16 +1,13 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.urls import reverse
 
-from .models import User
 from .forms import UserLoginForm, UserRegistrationForm
 
 
-def users(request):
-    context = {
-        "users": User.objects.all(),
-    }
-    return render(request, "users/index.html", context=context)
+def user(request):
+    context = {}
+    return render(request, "users/profile.html", context=context)
 
 
 def login(request):
@@ -22,7 +19,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse("main_page"))
+                return redirect(reverse("main_page"))
     else:
         form = UserLoginForm()
     context = {

@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
   </head>
   <body>
     <!-- Header -->
@@ -15,7 +15,6 @@
       <nav>
         <ul>
           <li><a href="{% url 'users:login' %}">Login</a></li>
-          <li><a href="{% url 'users:registration' %}">Register</a></li>
         </ul>
       </nav>
     </header>
