@@ -9,7 +9,7 @@ class HistoryFilm(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     def __str__(self) -> str:
-        return f"Film: {self.film.name} | User: {self.user.name}"
+        return f"Film: {self.film.name} | User: {self.user.username}"
 
 
 class HistorySerial(models.Model):
@@ -18,4 +18,4 @@ class HistorySerial(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     def __str__(self) -> str:
-        return f"Film: {self.serial.name} | User: {self.user.name}"
+        return f"Film: {self.serial.name} | User: {self.user.username}"

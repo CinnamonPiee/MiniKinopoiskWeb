@@ -10,27 +10,43 @@
   </head>
   <body>
     <div class="container">
-      <form class="login-form">
+      <form class="login-form" action="{% url 'users:registration' %}" method="post">
         <h2>Регистрация</h2>
+        {% csrf_token %}
         <div class="form-group">
-          <label for="nickname">Никнейм:</label>
-          <input type="text" id="nickname" name="nickname" required />
+          <label for="id_username">Никнейм:</label>
+          {{ form.username }} 
+          {% if form.username.errors %}
+          <div class="error">{{ form.username.errors }}</div>
+          {% endif %}
         </div>
         <div class="form-group">
-          <label for="email">Почта:</label>
-          <input type="email" id="email" name="email" required />
+          <label for="id_email">Почта:</label>
+          {{ form.email }}
+          {% if form.email.errors %}
+          <div class="error">{{ form.email.errors }}</div>
+          {% endif %}
         </div>
         <div class="form-group">
-          <label for="phone">Номер телефона:</label>
-          <input type="tel" id="phone" name="phone" required />
+          <label for="id_phone_number">Номер телефона:</label>
+          {{ form.phone_number }}
+          {% if form.phone_number.errors %}
+          <div class="error">{{ form.phone_number.errors }}</div>
+          {% endif %}
         </div>
         <div class="form-group">
-          <label for="password">Пароль:</label>
-          <input type="password" id="password" name="password" required />
+          <label for="id_password1">Пароль:</label>
+          {{ form.password1 }}
+          {% if form.password1.errors %}
+          <div class="error">{{ form.password1.errors }}</div>
+          {% endif %}
         </div>
         <div class="form-group">
-          <label for="confirm-password">Повторите пароль:</label>
-          <input type="password" id="confirm-password" name="confirm-password" required />
+          <label for="id_password2">Повторите пароль:</label>
+          {{ form.password2 }}
+          {% if form.password2.errors %}
+          <div class="error">{{ form.password2.errors }}</div>
+          {% endif %}
         </div>
         <button type="submit" class="button">Зарегистрироваться</button>
         <div class="register-link">Уже есть аккаунт? <a href="{% url 'users:login' %}">Войти</a></div>

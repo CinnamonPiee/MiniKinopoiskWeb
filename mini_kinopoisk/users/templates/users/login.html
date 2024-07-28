@@ -10,15 +10,16 @@
   </head>
   <body>
     <div class="container">
-      <form class="login-form">
+      <form class="login-form" action="{% url 'users:login' %}" method="post">
         <h2>Авторизация</h2>
+        {% csrf_token %}
         <div class="form-group">
-          <label for="email">Почта:</label>
-          <input type="email" id="email" name="email" required />
+          <label for="{{ form.username.username }}">Никнейм:</label>
+          {{ form.username }}
         </div>
         <div class="form-group">
-          <label for="password">Пароль:</label>
-          <input type="password" id="password" name="password" required />
+          <label for="{{ form.password.password}}">Пароль:</label>
+          {{ form.password }}
         </div>
         <button type="submit" class="button">Войти</button>
         <div class="register-link">Нет аккаунта? <a href="{% url 'users:registration' %}">Зарегистрироваться</a></div>
