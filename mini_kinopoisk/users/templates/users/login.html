@@ -1,15 +1,29 @@
-{% load static %} 
-
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MiniKinopoisk - login</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <title>MiniKinopoisk - Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
   </head>
   <body>
-    <h1>This is login!</h1>
+    <div class="container">
+      <form class="login-form">
+        <h2>Авторизация</h2>
+        <div class="form-group">
+          <label for="email">Почта:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Пароль:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="button">Войти</button>
+        <div class="register-link">Нет аккаунта? <a href="{% url 'users:registration' %}">Зарегистрироваться</a></div>
+        <div class="main_page-link">Вернуться на <a href="{% url 'main_page' %}">главную страницу</a></div>
+      </form>
+    </div>
   </body>
 </html>

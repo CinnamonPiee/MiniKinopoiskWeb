@@ -1,5 +1,4 @@
-{% load static %} 
-
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,9 +6,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MiniKinopoisk - registration</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}" />
   </head>
   <body>
-    <h1>This is registration!</h1>
+    <div class="container">
+      <form class="login-form">
+        <h2>Регистрация</h2>
+        <div class="form-group">
+          <label for="nickname">Никнейм:</label>
+          <input type="text" id="nickname" name="nickname" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Почта:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Номер телефона:</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Пароль:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Повторите пароль:</label>
+          <input type="password" id="confirm-password" name="confirm-password" required />
+        </div>
+        <button type="submit" class="button">Зарегистрироваться</button>
+        <div class="register-link">Уже есть аккаунт? <a href="{% url 'users:login' %}">Войти</a></div>
+        <div class="main_page-link">Вернуться на <a href="{% url 'main_page' %}">главную страницу</a></div>
+      </form>
+    </div>
   </body>
 </html>
