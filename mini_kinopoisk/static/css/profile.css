@@ -1,0 +1,169 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #ffa500;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header h1 a {
+    color: #ffa500;
+    text-decoration: none;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: #ffa500;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.user-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 80%;
+    max-width: 1200px;
+    height: 100%;
+}
+
+.user-info, .extra-content {
+    padding: 20px;
+    flex: 1;
+}
+
+.user-info {
+    border-right: 1px solid #ccc;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.profile-header h2 {
+    margin: 0;
+}
+
+#user-display-name {
+    font-weight: normal;
+    color: #555;
+}
+
+.photo-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-frame img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.change-photo-button {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffa500;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.change-photo-button:hover {
+    background-color: #ff8c00;
+}
+
+.user-info form {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info label {
+    margin: 10px 0 5px;
+}
+
+.user-info input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.user-info button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffa500;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.user-info button:hover {
+    background-color: #ff8c00;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+}
+
+.delete-button:hover {
+    background-color: #e60000;
+}
+
+.extra-content h2 {
+    margin-top: 0;
+}
+
+.extra-content p {
+    margin: 0;
+}

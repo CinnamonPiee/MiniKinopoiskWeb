@@ -5,7 +5,7 @@ from django.urls import reverse
 from .forms import UserLoginForm, UserRegistrationForm
 
 
-def user(request):
+def profile(request):
     context = {}
     return render(request, "users/profile.html", context=context)
 
@@ -19,7 +19,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return redirect(reverse("main_page"))
+                return redirect(reverse("users:profile"))
     else:
         form = UserLoginForm()
     context = {
