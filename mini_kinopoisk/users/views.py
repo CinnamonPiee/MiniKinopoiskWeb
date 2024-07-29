@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.urls import reverse
 
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
@@ -28,7 +28,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return redirect(reverse("users:profile"))
+                return redirect(reverse("main_page"))
     else:
         form = UserLoginForm()
     context = {
@@ -42,10 +42,16 @@ def registration(request):
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse("main_page"))
+            messages.success(request, "Поздравляем, вы успешно зарегистрированы!")
+            return redirect(reverse("users:login"))
     else:
         form = UserRegistrationForm()
     context = {
         "form": form,
     }
     return render(request, "users/registration.html", context=context)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect(reverse("main_page"))

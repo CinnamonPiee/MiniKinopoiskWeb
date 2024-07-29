@@ -12,7 +12,7 @@
   <div class="user-card">
     <div class="user-info">
       <div class="profile-header">
-        <h2>Профиль <span id="user-display-name">username</span></h2>
+        <h2>Профиль <span id="user-display-name">{{ user.username }}</span></h2>
         <div class="photo-frame">
           <img width="150" height="150"
           src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'user_default_image/default_avatar.jpg' %} {% endif %}"
@@ -21,8 +21,8 @@
       </div>
       <form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <label for="{{ form.user_photo.user_photo }}">Change photo:</label>
-        {{ form.user_photo }}
+        <label for="{{ form.image.image }}">Change photo:</label>
+        {{ form.image }}
 
         <label for="{{ form.username.username }}">Username:</label>
         {{ form.username }}

@@ -9,6 +9,22 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}" />
   </head>
   <body>
+    <!-- <div class="alert-container"> -->
+    <!--   {% if messages or form.non_field_errors %} -->
+    <!--   <div class="alert {% if messages %} alert-success {% else %} alert-warning {% endif %}"> -->
+    <!--     <div class="alert-content"> -->
+    <!--       {% if messages %} {% for message in messages %} -->
+    <!--       <p>{{ message }}</p> -->
+    <!--       {% endfor %} {% else %} -->
+    <!--       <p>{{ form.non_field_errors }}</p> -->
+    <!--       {% endif %} -->
+    <!--       <button type="button" class="close" aria-label="Close"> -->
+    <!--         <span aria-hidden="true">&times;</span> -->
+    <!--       </button> -->
+    <!--     </div> -->
+    <!--   </div> -->
+    <!--   {% endif %} -->
+    <!-- </div> -->
     <div class="container">
       <form class="login-form" action="{% url 'users:login' %}" method="post">
         <h2>Авторизация</h2>
@@ -18,7 +34,7 @@
           {{ form.username }}
         </div>
         <div class="form-group">
-          <label for="{{ form.password.password}}">Пароль:</label>
+          <label for="{{ form.password.password }}">Пароль:</label>
           {{ form.password }}
         </div>
         <button type="submit" class="button">Войти</button>
@@ -26,5 +42,16 @@
         <div class="main_page-link">Вернуться на <a href="{% url 'main_page' %}">главную страницу</a></div>
       </form>
     </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const closeButtons = document.querySelectorAll('.close')
+        closeButtons.forEach(button => {
+          button.addEventListener('click', function () {
+            this.closest('.alert').style.display = 'none'
+          })
+        })
+      })
+    </script>
   </body>
 </html>
