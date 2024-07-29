@@ -168,3 +168,6 @@ cython_debug/
 mini_kinopoisk/films_serials/fixtures/
 mini_kinopoisk/history/fixtures/
 mini_kinopoisk/users/fixtures/
+
+# Media
+media/

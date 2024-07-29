@@ -9,41 +9,63 @@
 
 {% block content %}
 <div class="container">
-        <div class="user-card">
-            <div class="user-info">
-                <div class="profile-header">
-                    <h2>Профиль <span id="user-display-name">username</span></h2>
-                    <div class="photo-frame">
-                        <img src="{% static 'user_default_image\default_avatar.jpg' %}" alt="Фото пользователя" id="user-photo">
-                        <button class="change-photo-button">Сменить</button>
-                    </div>
-                </div>
-                <form action="/update_profile" method="post">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-
-                    <label for="first_name">First Name:</label>
-                    <input type="text" id="first_name" name="first_name" required>
-
-                    <label for="second_name">Second Name:</label>
-                    <input type="text" id="second_name" name="second_name" required>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="phone_number">Phone Number:</label>
-                    <input type="tel" id="phone_number" name="phone_number" required>
-
-                    <button type="submit">Сохранить изменения</button>
-                </form>
-                <form action="/delete_account" method="post">
-                    <button type="submit" class="delete-button">Удалить аккаунт</button>
-                </form>
-            </div>
-            <div class="extra-content">
-                <h2>Дополнительная информация</h2>
-                <p>Этот блок пока пуст. Сюда можно добавить любую информацию.</p>
-            </div>
+  <div class="user-card">
+    <div class="user-info">
+      <div class="profile-header">
+        <h2>Профиль <span id="user-display-name">username</span></h2>
+        <div class="photo-frame">
+          <img width="150" height="150"
+          src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'user_default_image/default_avatar.jpg' %} {% endif %}"
+          class="user_avatar" alt="user photo">
         </div>
+      </div>
+      <form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="{{ form.user_photo.user_photo }}">Change photo:</label>
+        {{ form.user_photo }}
+
+        <label for="{{ form.username.username }}">Username:</label>
+        {{ form.username }}
+
+        <label for="{{ form.first_name.first_name }}">First Name:</label>
+        {{ form.first_name }}
+
+        <label for="{{ form.last_name.last_name }}">Last Name:</label>
+        {{ form.last_name }}
+
+        <label for="{{ form.email.email }}">Email:</label>
+        {{ form.email }}
+
+        <label for="{{ form.phone_number.phone_number }}">Phone Number:</label>
+        {{ form.phone_number }}
+
+        <button type="submit">Сохранить изменения</button>
+      </form>
+      <form action="/delete_account" method="post">
+        <button type="submit" class="delete-button">Удалить аккаунт</button>
+      </form>
     </div>
+    <div class="extra-content">
+      <h2>Дополнительная информация</h2>
+      <p>Этот блок пока пуст. Сюда можно добавить любую информацию.</p>
+    </div>
+  </div>
+</div>
+<script>
+function previewImage(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function() {
+        const image = new Image();
+        image.src = reader.result;
+        image.classList.add('profile-photo');
+        const photoFrame = document.querySelector('.photo-frame');
+        photoFrame.innerHTML = '';
+        photoFrame.appendChild(image);
+    };
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+</script>
 {% endblock content %}

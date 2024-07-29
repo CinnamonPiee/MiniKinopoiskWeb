@@ -14,35 +14,35 @@
         <h2>Регистрация</h2>
         {% csrf_token %}
         <div class="form-group">
-          <label for="id_username">Никнейм:</label>
+          <label for="{{ form.username.username }}">Никнейм:</label>
           {{ form.username }} 
           {% if form.username.errors %}
           <div class="error">{{ form.username.errors }}</div>
           {% endif %}
         </div>
         <div class="form-group">
-          <label for="id_email">Почта:</label>
+          <label for="{{ form.email.email }}">Почта:</label>
           {{ form.email }}
           {% if form.email.errors %}
           <div class="error">{{ form.email.errors }}</div>
           {% endif %}
         </div>
         <div class="form-group">
-          <label for="id_phone_number">Номер телефона:</label>
+          <label for="{{ form.phone_number.phone_number }}">Номер телефона:</label>
           {{ form.phone_number }}
           {% if form.phone_number.errors %}
           <div class="error">{{ form.phone_number.errors }}</div>
           {% endif %}
         </div>
         <div class="form-group">
-          <label for="id_password1">Пароль:</label>
+          <label for="{{ form.password1.password1 }}">Пароль:</label>
           {{ form.password1 }}
           {% if form.password1.errors %}
           <div class="error">{{ form.password1.errors }}</div>
           {% endif %}
         </div>
         <div class="form-group">
-          <label for="id_password2">Повторите пароль:</label>
+          <label for="{{ form.password2.password2 }}">Повторите пароль:</label>
           {{ form.password2 }}
           {% if form.password2.errors %}
           <div class="error">{{ form.password2.errors }}</div>

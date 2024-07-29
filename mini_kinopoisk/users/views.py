@@ -2,11 +2,20 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.urls import reverse
 
-from .forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 
 def profile(request):
-    context = {}
+    if request.method == "POST":
+        form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("users:profile"))
+    else:
+        form = UserProfileForm(instance=request.user)
+    context = {
+        "form": form
+    }
     return render(request, "users/profile.html", context=context)
 
 

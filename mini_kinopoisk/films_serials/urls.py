@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 
 from films_serials.views import films_serials
 

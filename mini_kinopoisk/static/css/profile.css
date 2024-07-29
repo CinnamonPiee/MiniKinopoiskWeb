@@ -65,6 +65,7 @@ nav ul li a {
     width: 80%;
     max-width: 1200px;
     height: 100%;
+    box-sizing: border-box;
 }
 
 .user-info, .extra-content {
@@ -74,6 +75,8 @@ nav ul li a {
 
 .user-info {
     border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-header {
@@ -105,21 +108,7 @@ nav ul li a {
     border-radius: 10px;
     object-fit: cover;
     border: 2px solid #ccc;
-    margin-bottom: 5px;
-}
-
-.change-photo-button {
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ffa500;
-    color: #fff;
-    cursor: pointer;
-    font-size: 0.8rem;
-}
-
-.change-photo-button:hover {
-    background-color: #ff8c00;
+    margin-bottom: 10px;
 }
 
 .user-info form {
@@ -160,10 +149,26 @@ nav ul li a {
     background-color: #e60000;
 }
 
+.extra-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .extra-content h2 {
     margin-top: 0;
 }
 
 .extra-content p {
     margin: 0;
+}
+
+.form-user_photo {
+    margin-bottom: 10px;
+}
+
+.form-user_photo input[type="file"] {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
 }
