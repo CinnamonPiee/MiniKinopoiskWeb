@@ -46,12 +46,27 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserProfileForm(UserChangeForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={"class": "form-username", "readonly": True}))
-    first_name = forms.CharField(widget=forms.TextInput(attrs={"class": "form-first_name"}), required=False)
-    last_name = forms.CharField(widget=forms.TextInput(attrs={"class": "form-last_name"}), required=False)
-    email = forms.CharField(widget=forms.TextInput(attrs={"class": "form-email", "readonly": True}))
-    phone_number = forms.CharField(widget=forms.NumberInput(attrs={"class": "form-phone_number"}), required=False)
-    image = forms.ImageField(widget=forms.FileInput(attrs={"class": "form-user_photo", "onchange": "previewImage(event)"}), required=False)
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        "class": "form-username", 
+        "readonly": True
+        }))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        "class": "form-first_name"
+        }), required=False)
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
+        "class": "form-last_name"
+        }), required=False)
+    email = forms.CharField(widget=forms.TextInput(attrs={
+        "class": "form-email", 
+        "readonly": True
+        }))
+    phone_number = forms.CharField(widget=forms.NumberInput(attrs={
+        "class": "form-phone_number"
+        }), required=False)
+    image = forms.ImageField(widget=forms.FileInput(attrs={
+        "class": "form-user_photo", 
+        "onchange": "previewImage(event)"
+        }), required=False)
 
     class Meta:
         model = User

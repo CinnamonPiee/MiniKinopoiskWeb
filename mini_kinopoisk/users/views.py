@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 
+@login_required
 def profile(request):
     if request.method == "POST":
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
@@ -14,7 +16,7 @@ def profile(request):
     else:
         form = UserProfileForm(instance=request.user)
     context = {
-        "form": form
+        "form": form,
     }
     return render(request, "users/profile.html", context=context)
 

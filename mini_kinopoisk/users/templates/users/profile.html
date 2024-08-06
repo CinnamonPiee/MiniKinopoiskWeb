@@ -1,71 +1,97 @@
-{% extends "users/base.html" %} 
-{% load static %} 
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiniKinopoisk - Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <h1><a href="{% url 'main_page' %}" class="logo">Mini Kinopoisk</a></h1>
+      <nav>
+        {% if user.is_authenticated %}
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% if user.is_superuser or user.is_staff %}
+          <li>
+            <a class="dropdown-item" href="{% url 'admin:index' %}"> Админ-панель </a>
+          </li>
+          {% endif %}
+          <li>
+            <a class="dropdown-item" href="{% url 'users:logout' %}"> Выйти </a>
+          </li>
+        </ul>
+        {% else %}
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li>
+            <a class="dropdown-item" href="{% url 'users:login' %}">Войти</a>
+          </li>
+        </ul>
+        {% endif %}
+      </nav>
+    </header>
+    <div class="container">
+      <div class="user-card">
+        <div class="user-info">
+          <div class="profile-header">
+            <h2>Профиль <span id="user-display-name">{{ user.username }}</span></h2>
+            <div class="photo-frame">
+              <img
+                width="150"
+                height="150"
+                src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'user_default_image/default_avatar.jpg' %} {% endif %}"
+                class="user_avatar"
+                alt="user photo" />
+            </div>
+          </div>
+          <form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="{{ form.image.image }}">Change photo:</label>
+            {{ form.image }}
 
-{% block title %} 
-    MiniKinopoisk - Profile 
-{% endblock title %} 
+            <label for="{{ form.username.username }}">Username:</label>
+            {{ form.username }}
 
+            <label for="{{ form.first_name.first_name }}">First Name:</label>
+            {{ form.first_name }}
 
-{% block content %}
-<div class="container">
-  <div class="user-card">
-    <div class="user-info">
-      <div class="profile-header">
-        <h2>Профиль <span id="user-display-name">{{ user.username }}</span></h2>
-        <div class="photo-frame">
-          <img width="150" height="150"
-          src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'user_default_image/default_avatar.jpg' %} {% endif %}"
-          class="user_avatar" alt="user photo">
+            <label for="{{ form.last_name.last_name }}">Last Name:</label>
+            {{ form.last_name }}
+
+            <label for="{{ form.email.email }}">Email:</label>
+            {{ form.email }}
+
+            <label for="{{ form.phone_number.phone_number }}">Phone Number:</label>
+            {{ form.phone_number }}
+
+            <button type="submit">Сохранить изменения</button>
+          </form>
+          <form action="/delete_account" method="post">
+            <button type="submit" class="delete-button">Удалить аккаунт</button>
+          </form>
         </div>
+        {% include "users/mini_game.html" %}
       </div>
-      <form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="{{ form.image.image }}">Change photo:</label>
-        {{ form.image }}
-
-        <label for="{{ form.username.username }}">Username:</label>
-        {{ form.username }}
-
-        <label for="{{ form.first_name.first_name }}">First Name:</label>
-        {{ form.first_name }}
-
-        <label for="{{ form.last_name.last_name }}">Last Name:</label>
-        {{ form.last_name }}
-
-        <label for="{{ form.email.email }}">Email:</label>
-        {{ form.email }}
-
-        <label for="{{ form.phone_number.phone_number }}">Phone Number:</label>
-        {{ form.phone_number }}
-
-        <button type="submit">Сохранить изменения</button>
-      </form>
-      <form action="/delete_account" method="post">
-        <button type="submit" class="delete-button">Удалить аккаунт</button>
-      </form>
     </div>
-    <div class="extra-content">
-      <h2>Дополнительная информация</h2>
-      <p>Этот блок пока пуст. Сюда можно добавить любую информацию.</p>
-    </div>
-  </div>
-</div>
-<script>
-function previewImage(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function() {
-        const image = new Image();
-        image.src = reader.result;
-        image.classList.add('profile-photo');
-        const photoFrame = document.querySelector('.photo-frame');
-        photoFrame.innerHTML = '';
-        photoFrame.appendChild(image);
-    };
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-}
-</script>
-{% endblock content %}
+    <script>
+      function previewImage(event) {
+        const file = event.target.files[0]
+        const reader = new FileReader()
+        reader.onload = function () {
+          const image = new Image()
+          image.src = reader.result
+          image.classList.add('profile-photo')
+          const photoFrame = document.querySelector('.photo-frame')
+          photoFrame.innerHTML = ''
+          photoFrame.appendChild(image)
+        }
+        if (file) {
+          reader.readAsDataURL(file)
+        }
+      }
+    </script>
+  </body>
+</html>

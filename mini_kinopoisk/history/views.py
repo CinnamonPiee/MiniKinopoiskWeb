@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from .models import HistoryFilm, HistorySerial
 
 
+@login_required
 def history(request):
     context = {
         "history_film": HistoryFilm.objects.all(),

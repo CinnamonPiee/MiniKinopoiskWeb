@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main_page.css' %}" />
   </head>
   <body>
     <!-- Header -->
@@ -37,7 +37,30 @@
       </nav>
     </header>
 
-    {% block content %} {% endblock content %}
+    <!-- Main Layout -->
+    <main class="main-layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="separator_top"></div>
+        <ul>
+          <li><a href="{% url 'main_page' %}">Главная страница</a></li>
+          <li><a href="{% url 'films_serials:films_serials' %}">Найти фильм</a></li>
+          <li><a href="#">Рандомный фильм</a></li>
+          <li><a href="#">Кастомный поиск</a></li>
+          <li><a href="{% url 'history:history' %}">История поиска</a></li>
+        </ul>
+        <div class="separator"></div>
+        <ul>
+          <li><a href="#">Обратная связь</a></li>
+          <li><a href="#">Помощь</a></li>
+          <li><a href="#">Поддержка</a></li>
+          <li><a href="#">Инфо</a></li>
+        </ul>
+      </div>
+      <!-- Content -->
+      <div class="content">{% block content %} {% endblock content %}</div>
+    </main>
+
+    <!-- Additional Scripts or Footer if needed -->
   </body>
 </html>
-

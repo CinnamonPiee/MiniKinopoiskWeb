@@ -7,5 +7,5 @@ app_name = "history"
 
 
 urlpatterns = [
-    path("", history, name="index")
+    path("", history, name="history")
 ]

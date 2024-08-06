@@ -28,6 +28,7 @@
           <div class="error">{{ form.username.errors }}</div>
           {% endif %}
         </div>
+        # TODO # Исправить ошибку, пользователь может создать аккаут с уже имеющиеся почтой в бд
         <div class="form-group">
           <label for="{{ form.email.email }}">Почта:</label>
           {{ form.email }} 
@@ -42,6 +43,7 @@
           <div class="error">{{ form.phone_number.errors }}</div>
           {% endif %}
         </div>
+        # TODO # Исправить ошибку, необходимо сделать допустимый пароль как и в телеграме (тут к примеру пользователь может ввести пароль без цифр)
         <div class="form-group">
           <label for="{{ form.password1.password1 }}">Пароль:</label>
           {{ form.password1 }} 
