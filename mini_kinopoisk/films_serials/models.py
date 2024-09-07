@@ -10,7 +10,7 @@ class SearchFilm(models.Model):
     description = models.TextField(null=True)
     rating = models.FloatField(null=True)
     age_rating = models. PositiveBigIntegerField(null=True)
-    picture = models.URLField(max_length=200, null=True)
+    picture = models.URLField(max_length=350, null=True)
 
     class Meta:
         verbose_name = "Фильм"
@@ -29,7 +29,7 @@ class SearchSerial(models.Model):
     country = models.CharField(null=True)
     age_rating = models. PositiveBigIntegerField(null=True)
     description = models.TextField(null=True)
-    picture = models.URLField(max_length=200, null=True)
+    picture = models.URLField(max_length=350, null=True)
 
     class Meta:
         verbose_name = "Сериал"

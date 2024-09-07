@@ -43,10 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
-    'films_serials',
-    'history',
-    'main_page',
+    
+    'users.apps.UsersConfig',
+    'films_serials.apps.FilmsSerialsConfig',
+    'history.apps.HistoryConfig',
+    'main_page.apps.MainPageConfig',
 ]
 
 MIDDLEWARE = [

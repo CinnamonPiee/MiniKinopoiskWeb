@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.http import HttpRequest
 
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 
 @login_required
-def profile(request):
+def profile(request: HttpRequest):
     if request.method == "POST":
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -21,7 +22,7 @@ def profile(request):
     return render(request, "users/profile.html", context=context)
 
 
-def login(request):
+def login(request: HttpRequest):
     if request.method == "POST":
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
@@ -39,7 +40,7 @@ def login(request):
     return render(request, "users/login.html", context=context)
 
 
-def registration(request):
+def registration(request: HttpRequest):
     if request.method == "POST":
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
